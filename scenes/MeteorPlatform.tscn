@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://4o3ewko4fr50"]
+
+[ext_resource type="Texture2D" uid="uid://cq5yn6ecuv8qf" path="res://assets/meteorBrown_big1.png" id="1_nmfqw"]
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(70.8416, 70.5898)
+
+[node name="Meteor" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nmfqw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("2")

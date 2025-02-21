@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://6uecj74jnyfd"]
+
+[ext_resource type="Script" path="res://scenes/ObjectiveArea.gd" id="1_2y2eh"]
+[ext_resource type="Script" path="res://scenes/node_2d.gd" id="2_f4r75"]
+[ext_resource type="Texture2D" uid="uid://dh610bbucs6rh" path="res://assets/fasilkom.png" id="3_f1f5t"]
+[ext_resource type="Texture2D" uid="uid://dcwu8ypraifim" path="res://assets/icon.png" id="4_hbaq6"]
+
+[node name="MainLevel2" type="Node"]
+
+[node name="ObjectiveArea" type="Area2D" parent="."]
+script = ExtResource("1_2y2eh")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("2_f4r75")
+
+[node name="Fasilkom" type="Sprite2D" parent="."]
+position = Vector2(632, 132)
+scale = Vector2(1.41333, 1.35806)
+texture = ExtResource("3_f1f5t")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(635, 334)
+scale = Vector2(2.20313, 1.85938)
+texture = ExtResource("4_hbaq6")
+
+[connection signal="body_entered" from="ObjectiveArea" to="ObjectiveArea" method="_on_ObjectiveArea_body_entered"]

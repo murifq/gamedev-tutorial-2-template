@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://mehni88w6gae"]
+
+[ext_resource type="Script" path="res://scenes/ObjectiveArea2.gd" id="1_vsx1y"]
+[ext_resource type="PackedScene" uid="uid://4o3ewko4fr50" path="res://scenes/MeteorPlatform.tscn" id="3_dwohw"]
+[ext_resource type="PackedScene" uid="uid://cvbiaww5dwujv" path="res://scenes/BlueShip2.tscn" id="3_j6dvc"]
+[ext_resource type="Script" path="res://scenes/node_2d.gd" id="3_siw5n"]
+[ext_resource type="Script" path="res://scenes/GreenShip.gd" id="5_gnh52"]
+[ext_resource type="Script" path="res://scenes/BorderArea2.gd" id="6_wgow0"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(138.75, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csvmm"]
+size = Vector2(1018, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ciod"]
+size = Vector2(1158, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_viaa0"]
+size = Vector2(20, 647)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vssvx"]
+size = Vector2(20, 565)
+
+[node name="MainLevel2" type="Node"]
+
+[node name="ObjectiveArea2" type="Area2D" parent="."]
+script = ExtResource("1_vsx1y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectiveArea2"]
+position = Vector2(1077, 45)
+shape = SubResource("1")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("3_siw5n")
+
+[node name="Meteor" parent="Node2D" instance=ExtResource("3_dwohw")]
+position = Vector2(453, 206)
+
+[node name="Meteor" parent="Node2D/Meteor" instance=ExtResource("3_dwohw")]
+position = Vector2(321, 187)
+
+[node name="Meteor2" parent="Node2D/Meteor" instance=ExtResource("3_dwohw")]
+position = Vector2(275, -127)
+
+[node name="Meteor" parent="Node2D/Meteor/Meteor2" instance=ExtResource("3_dwohw")]
+position = Vector2(363, 446)
+
+[node name="Meteor2" parent="Node2D" instance=ExtResource("3_dwohw")]
+position = Vector2(294, 590)
+
+[node name="GreenShip" parent="." instance=ExtResource("3_j6dvc")]
+position = Vector2(254, 387)
+gravity_scale = 2.219
+script = ExtResource("5_gnh52")
+
+[node name="BorderArea" type="Area2D" parent="."]
+script = ExtResource("6_wgow0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BorderArea"]
+position = Vector2(499, -14)
+shape = SubResource("RectangleShape2D_csvmm")
+
+[node name="BorderArea2" type="Area2D" parent="."]
+position = Vector2(3, 659)
+script = ExtResource("6_wgow0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BorderArea2"]
+position = Vector2(569, 0)
+shape = SubResource("RectangleShape2D_7ciod")
+
+[node name="BorderArea3" type="Area2D" parent="."]
+position = Vector2(-9, 9)
+script = ExtResource("6_wgow0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BorderArea3"]
+position = Vector2(0, 313.5)
+shape = SubResource("RectangleShape2D_viaa0")
+
+[node name="BorderArea4" type="Area2D" parent="."]
+position = Vector2(1163, 95)
+script = ExtResource("6_wgow0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BorderArea4"]
+position = Vector2(0, 272.5)
+shape = SubResource("RectangleShape2D_vssvx")
+
+[connection signal="body_entered" from="ObjectiveArea2" to="ObjectiveArea2" method="_on_ObjectiveArea_body_entered"]
+[connection signal="body_entered" from="BorderArea" to="BorderArea" method="_on_body_entered"]
+[connection signal="body_entered" from="BorderArea2" to="BorderArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="BorderArea3" to="BorderArea3" method="_on_body_entered"]
+[connection signal="body_entered" from="BorderArea4" to="BorderArea4" method="_on_body_entered"]
